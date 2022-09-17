@@ -96,7 +96,8 @@ def main():
 		,use_multiprocessing=False
 		,workers=workers
 		,callbacks=callbacks
-		,epochs=epochs
+		,epochs=epochs-initial_epochs
+		,initial_epoch=initial_epochs
 		,verbose=1
 		,max_queue_size=128
 	)

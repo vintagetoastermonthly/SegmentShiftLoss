@@ -112,6 +112,8 @@ def getmodel(modelfile,shape=(512,512,3),o_channels=1):
 		)
 		for layer in basemodel.layers:
 			layer.trainable=False
+			if layer.name=='conv1_bn':
+				layer.trainable=True
 
 		x = basemodel.get_layer("conv4_block6_2_relu").output
 		x = DilatedSpatialPyramidPooling(x)
