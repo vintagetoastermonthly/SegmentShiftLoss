@@ -54,8 +54,8 @@ train_label_generator = label_datagen.flow_from_directory(train_label_dir ,**lab
 valid_image_generator = image_datagen.flow_from_directory(valid_image_dir ,**image_parms)
 valid_label_generator = label_datagen.flow_from_directory(valid_label_dir ,**label_parms)
 
-fine_valid_image_generator = image_datagen.flow_from_directory(fine_valid_image_dir ,**image_parms)
-fine_valid_label_generator = label_datagen.flow_from_directory(fine_valid_label_dir ,**label_parms)
+#fine_valid_image_generator = image_datagen.flow_from_directory(fine_valid_image_dir ,**image_parms)
+#fine_valid_label_generator = label_datagen.flow_from_directory(fine_valid_label_dir ,**label_parms)
 
 train_generator = zip(train_image_generator,train_label_generator)
 valid_generator = zip(valid_image_generator,valid_label_generator)

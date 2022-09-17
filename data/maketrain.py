@@ -1,8 +1,7 @@
 """
  * Author: David Knox
  * Created: Sept 2021
- * Purpose: Preprocess and split into train and valid
- *		random assign image and mask pairs to train or valid
+ * Purpose: Preprocess images
  * (c) Copyright by Lynker Analytics.
 """
 import numpy as np
@@ -16,23 +15,19 @@ from skimage.exposure import adjust_gamma
 import rasterio
 import gc
 
-indir = 'MLTraining_Area7_Fine/'
-traindir='train/'
-validdir='valid/'
+indir = 'MLTraining_Area7_Pre_SansHuman/'
+outdir='train/'
 inext='tif'
 outext='tif'
-valid_fraction=0.0 #0.3
 np.random.seed(123)
 
 prefix='Pre7_'
 
 dim=512
-#dim=256
 
 for f in listdir(indir+'images/'):
 	if inext == f.split('.')[-1]:
-		if os.path.isfile(traindir+'label/0/'+prefix+f.replace(inext,outext)): continue
-		if os.path.isfile(validdir+'label/0/'+prefix+f.replace(inext,outext)): continue
+		if os.path.isfile(outdir+'label/0/'+prefix+f.replace(inext,outext)): continue
 		imfile=indir+'/images/'+f
 		maskfile=indir+'/labels/1/'+f
 		if isfile(maskfile):
@@ -51,11 +46,8 @@ for f in listdir(indir+'images/'):
 						maskim2[:,:,2]=maskim
 
 						#---------------------------------------------------------------
-						# save to train or valid
+						# save to train
 						#---------------------------------------------------------------
-						outdir=traindir
-						if np.random.random() < valid_fraction:
-							outdir=validdir
 						with open(outdir+'image/0/'+prefix+f.replace(inext,outext),'wb') as dest:
 							rgb.save(dest)
 						with open(outdir+'label/0/'+prefix+f.replace(inext,outext),'wb') as dest:

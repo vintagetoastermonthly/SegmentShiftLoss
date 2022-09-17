@@ -44,9 +44,9 @@ train_image_dir='data/train/image/'
 train_label_dir='data/train/label/'
 valid_image_dir='data/valid/image/'
 valid_label_dir='data/valid/label/'
-fine_valid_image_dir='data/Fine_Valid/image/'
-fine_valid_label_dir='data/Fine_Valid/label/'
+#fine_valid_image_dir='data/Fine_Valid/image/'
+#fine_valid_label_dir='data/Fine_Valid/label/'
 
-valid_image_dir=fine_valid_image_dir
-valid_label_dir=fine_valid_label_dir
+#valid_image_dir=fine_valid_image_dir
+#valid_label_dir=fine_valid_label_dir
 
