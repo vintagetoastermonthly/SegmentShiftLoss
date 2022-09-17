@@ -204,8 +204,6 @@ def entropy_weighted_bce(y_true, y_pred):
         return 0.9*n + 0.1*loss
 
 def CroppedBIoU(crop=((128,128),(128,128))):
-	#binIoU=tf.keras.metrics.BinaryIoU(target_class_ids=[1],threshold=0.5)
-	#crop = ((top_crop, bottom_crop), (left_crop, right_crop))
 	def BIoU(y,p):
 		y_true=tf.keras.layers.Cropping2D(cropping=crop)(y)
 		y_pred=tf.keras.layers.Cropping2D(cropping=crop)(p)
@@ -214,7 +212,6 @@ def CroppedBIoU(crop=((128,128),(128,128))):
 		union = tf.reduce_sum(y_true) + tf.reduce_sum(y_pred) - intersection
 		IoU = intersection / (union + K.epsilon())
 
-		#return binIoU(y_true,y_pred)
 		return IoU
 	return BIoU
 

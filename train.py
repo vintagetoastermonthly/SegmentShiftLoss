@@ -15,7 +15,6 @@ def main():
 
 	print ( age, flush=True )
 
-	#adam=tf.keras.optimizers.Adam(learning_rate=0.001)
 	adam=NoisyAdam(learning_rate=0.01)
 	binIoU=tf.keras.metrics.BinaryIoU(target_class_ids=[1],threshold=0.5)
 
@@ -24,16 +23,9 @@ def main():
 
 	model.compile(
 		optimizer=adam
-		#,loss=focal_loss()
 		,loss=tf.keras.losses.BinaryCrossentropy()
-		#,loss=ce_jaccard_loss
-		#,loss=entropy_weighted_bce
-		#,loss=la_gauss_mse
-		#,loss='mse'
 		#,loss=segment_shift_bce
-		#,loss=ce_dice_loss
 		,metrics=['acc',IoU]
-		#,metrics=['acc',ce_jaccard_loss2]
 		,run_eagerly=True
 	)
 
@@ -66,21 +58,11 @@ def main():
 		layer.trainable=True
 
 	adam=tf.keras.optimizers.Adam(learning_rate=0.00001)
-	#adam=NoisyAdam(learning_rate=0.0001)
 
 	model.compile(
 		optimizer=adam
-		#,loss=focal_loss()
 		,loss=tf.keras.losses.BinaryCrossentropy()
-		#,loss=ce_jaccard_loss
-		#,loss=segment_shift_bce
-		#,loss=jaccard_distance
-		#,loss=la_gauss_mse
-		#,loss=entropy_weighted_bce
-		#,loss='mse'
-		#,metrics=['acc']
 		,metrics=['acc',IoU]
-		#,metrics=['acc',binIoU]
 		,run_eagerly=True
 	)
 
