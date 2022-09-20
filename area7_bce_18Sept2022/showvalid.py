@@ -20,7 +20,7 @@ def main():
 
 	print ( age, flush=True )
 
-	for X,y in valid_generator:
+	for X,y in train_generator:
 		p=model.predict(X)
 		if modeltype=="DeepLab":
 			X+=1
@@ -58,10 +58,7 @@ def main():
 		nim[border:-border,height*2+border,:]=127
 		nim[border:-border,-border,:]=127
 
-		nim[:,height,:]=255
-		nim[:,2*height,:]=255
-
-		Image.fromarray(nim).resize(((width*3)//2,height//2)).show()
+		Image.fromarray(nim).show()
 		input("press enter to continue") 
 	
 
